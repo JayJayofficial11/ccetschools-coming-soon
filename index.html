@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CCET Schools - Coming Soon</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #0a192f, #1c2541, #3a506b);
+      background-size: 300% 300%;
+      animation: gradientBG 15s ease infinite;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      text-align: center;
+      padding: 2rem;
+      width: 90%;
+      max-width: 600px;
+      border-radius: 15px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      letter-spacing: 2px;
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .time-box {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 1rem;
+      border-radius: 10px;
+      min-width: 70px;
+    }
+
+    .time-box span {
+      display: block;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .email-box {
+      display: flex;
+      justify-content: center;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .email-box input {
+      padding: 0.7rem;
+      border: none;
+      border-radius: 8px 0 0 8px;
+      outline: none;
+      width: 70%;
+      max-width: 300px;
+    }
+
+    .email-box button {
+      padding: 0.7rem 1rem;
+      border: none;
+      border-radius: 0 8px 8px 0;
+      background: #00b4d8;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .email-box button:hover {
+      background: #0096c7;
+    }
+
+    @media(max-width: 500px) {
+      h1 { font-size: 1.8rem; }
+      .email-box input { width: 100%; border-radius: 8px; margin-bottom: 0.5rem; }
+      .email-box button { border-radius: 8px; width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🚀 CCET Schools</h1>
+    <p>Something Amazing is Coming Soon...</p>
+
+    <!-- Countdown Timer -->
+    <div class="countdown">
+      <div class="time-box"><span id="days">00</span>Days</div>
+      <div class="time-box"><span id="hours">00</span>Hrs</div>
+      <div class="time-box"><span id="minutes">00</span>Min</div>
+      <div class="time-box"><span id="seconds">00</span>Sec</div>
+    </div>
+
+    <!-- Email Subscription -->
+    <div class="email-box">
+      <input id="emailInput" type="email" placeholder="Enter your email" required />
+      <button id="subscribeBtn">Notify Me</button>
+    </div>
+  </div>
+
+  <script>
+    // Countdown Timer Logic (Set Launch Date)
+    const launchDate = new Date("Nov 1, 2025 00:00:00").getTime();
+    const timer = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = launchDate - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("days").textContent = days;
+      document.getElementById("hours").textContent = hours;
+      document.getElementById("minutes").textContent = minutes;
+      document.getElementById("seconds").textContent = seconds;
+
+      if (distance < 0) {
+        clearInterval(timer);
+        document.querySelector(".countdown").innerHTML = "We are Live!";
+      }
+    }, 1000);
+
+    // Google Sheets Integration
+    const scriptURL = "YOUR_GOOGLE_SCRIPT_URL"; // replace with your Apps Script Web App URL
+    const button = document.getElementById("subscribeBtn");
+    const input = document.getElementById("emailInput");
+
+    button.addEventListener("click", () => {
+      const email = input.value.trim();
+      if (!email) {
+        alert("Please enter a valid email");
+        return;
+      }
+
+      fetch(scriptURL, {
+        method: "POST",
+        body: new URLSearchParams({ email: email })
+      })
+      .then(res => {
+        alert("✅ Thanks! We’ll notify you at " + email);
+        input.value = "";
+      })
+      .catch(err => {
+        alert("❌ Something went wrong. Try again.");
+      });
+    });
+  </script>
+</body>
+</html>
