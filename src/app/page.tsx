@@ -24,8 +24,7 @@ export default function Home() {
 
       <main className="flex-1 flex flex-col items-center justify-center container mx-auto px-6 py-20 relative z-10 text-center">
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/5 dark:bg-white/5 border border-blue-500/10 dark:border-white/10 text-blue-600 dark:text-blue-400 text-xs font-black uppercase tracking-[0.2em] mb-8">
-          <Sparkles className="h-3 w-3 fill-current" />
-          Coming Very Soon
+          Coming Soon
         </div>
 
         <h1 className="text-6xl md:text-8xl font-black tracking-tighter leading-[0.9] mb-8 max-w-4xl">
