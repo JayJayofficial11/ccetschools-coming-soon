@@ -34,7 +34,7 @@ export default function Home() {
         </h1>
 
         <p className="text-xl text-zinc-500 dark:text-zinc-400 max-w-2xl leading-relaxed font-medium mb-12">
-          The definitive all-in-one platform for modern education management. We are building the future of classroom automation, campus management, and student success.
+          CCETSCHOOLS is here to digitalize all school operations by providing school owners with an all-in-one digital portal and a personalized website in just one click.
         </p>
 
         <EmailForm />
@@ -60,7 +60,7 @@ export default function Home() {
 
         {/* Logos Display */}
         <div className="mt-24 space-y-6">
-          <p className="text-[10px] font-black uppercase tracking-[0.3em] text-zinc-400">Our Official Branding</p>
+          {/* <p className="text-[10px] font-black uppercase tracking-[0.3em] text-zinc-400">Our Official Branding</p> */}
           <div className="flex flex-wrap justify-center items-center gap-12 grayscale hover:grayscale-0 transition-all duration-700">
             <div className="relative h-12 w-32">
               <Image src="/images/20260127_085556.png" alt="Logo PNG" fill className="object-contain" />
@@ -77,10 +77,12 @@ export default function Home() {
           &copy; {new Date().getFullYear()} Consortium Of Computer & Engineering Technologies.
         </p>
         <div className="flex gap-6">
-          <Facebook className="h-4 w-4 text-zinc-400 hover:text-blue-600 cursor-pointer transition-colors" />
-          <Twitter className="h-4 w-4 text-zinc-400 hover:text-blue-400 cursor-pointer transition-colors" />
-          <Instagram className="h-4 w-4 text-zinc-400 hover:text-pink-600 cursor-pointer transition-colors" />
-          <Linkedin className="h-4 w-4 text-zinc-400 hover:text-blue-700 cursor-pointer transition-colors" />
+          <a href="https://x.com/ccetschools?s=21" target="_blank" rel="noopener noreferrer" title="Follow us on X">
+            <Twitter className="h-4 w-4 text-zinc-400 hover:text-blue-400 cursor-pointer transition-colors" />
+          </a>
+          <a href="https://www.instagram.com/ccetschools" target="_blank" rel="noopener noreferrer" title="Follow us on Instagram">
+            <Instagram className="h-4 w-4 text-zinc-400 hover:text-pink-600 cursor-pointer transition-colors" />
+          </a>
         </div>
       </footer>
     </div>

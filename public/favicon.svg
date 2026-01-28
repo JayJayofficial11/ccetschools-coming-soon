@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <!-- Blue background -->
+  <rect width="256" height="256" fill="#2563eb" rx="40"/>
+  
+  <!-- Graduation cap -->
+  <g transform="translate(128, 128)">
+    <!-- Cap -->
+    <path d="M -60 -20 L 0 -50 L 60 -20 Z" fill="#ffffff" stroke="#ffffff" stroke-width="3" stroke-linejoin="round"/>
+    <!-- Visor -->
+    <rect x="-70" y="-18" width="140" height="12" fill="#ffffff" rx="2"/>
+    <!-- Tassel -->
+    <line x1="0" y1="-18" x2="0" y2="10" stroke="#ffffff" stroke-width="3"/>
+    <circle cx="0" cy="15" r="6" fill="#ffffff"/>
+  </g>
+</svg>

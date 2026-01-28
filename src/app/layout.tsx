@@ -17,6 +17,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "CCETSCHOOLS | Empowering Education",
   description: "The definitive school management ecosystem. Coming Very Soon.",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
