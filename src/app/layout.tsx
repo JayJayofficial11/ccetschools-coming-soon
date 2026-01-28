@@ -18,7 +18,11 @@ export const metadata: Metadata = {
   title: "CCETSCHOOLS | Empowering Education",
   description: "The definitive school management ecosystem. Coming Very Soon.",
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+    ],
+    apple: "/favicon.ico",
   },
 };
 

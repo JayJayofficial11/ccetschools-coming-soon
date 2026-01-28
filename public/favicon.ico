@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <!-- Blue background square -->
+  <rect width="256" height="256" fill="#2563eb" rx="60"/>
+  
+  <!-- Graduation cap icon -->
+  <g transform="translate(128, 110)">
+    <!-- Cap top -->
+    <path d="M -75 -15 L 0 -60 L 75 -15 Z" fill="#ffffff" stroke="none"/>
+    
+    <!-- Cap bill/visor -->
+    <ellipse cx="0" cy="-12" rx="85" ry="18" fill="#ffffff"/>
+    
+    <!-- Tassel string -->
+    <line x1="0" y1="-12" x2="0" y2="35" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
+    
+    <!-- Tassel ball -->
+    <circle cx="0" cy="45" r="10" fill="#ffffff"/>
+  </g>
+</svg>
