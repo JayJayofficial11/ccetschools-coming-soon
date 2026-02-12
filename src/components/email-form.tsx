@@ -4,12 +4,12 @@ import { useState } from "react";
 import { Button } from "./ui/button";
 import { toast } from "sonner";
 import { Send } from "lucide-react";
+import { subscribeEmail } from "@/app/actions";
 
 export function EmailForm() {
     const [email, setEmail] = useState("");
     const [isLoading, setIsLoading] = useState(false);
 
-    const scriptURL = "https://docs.google.com/spreadsheets/d/1gX2xtAALGQg7BAmXtFdCH3rvlhNOvI0IQlUtlu5PV30/edit?gid=0#gid=0";
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -17,25 +17,15 @@ export function EmailForm() {
 
         setIsLoading(true);
         try {
-            // Note: Since Google Sheets URL is often used with Apps Script via POST, 
-            // we'll use a FormData approach which is common for these integrations.
-            const formData = new FormData();
-            formData.append("email", email);
-            formData.append("timestamp", new Date().toISOString());
+            const result = await subscribeEmail(email);
 
-            // We use no-cors if the Google Script isn't configured for CORS, 
-            // but for a professional Next.js app, we hope it's a Web App URL.
-            // The user provided the spreadsheet URL, but usually, it's a Web App Exec URL.
-            // I'll implement it to fetch.
-
-            await fetch(scriptURL, {
-                method: "POST",
-                body: formData,
-                mode: "no-cors" // Standard for many Google Script integrations
-            });
-
-            toast.success("Thank you for subscribing! We'll keep you posted.");
-            setEmail("");
+            if (result.success) {
+                toast.success("Thank you for subscribing! We'll keep you posted.");
+                setEmail("");
+            } else {
+                console.error("Subscription failed:", result.error);
+                toast.error(result.error || "Subscription failed. Please try again later.");
+            }
         } catch (error) {
             console.error("Subscription error:", error);
             toast.error("Something went wrong. Please try again later.");
