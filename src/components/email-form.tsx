@@ -16,8 +16,12 @@ export function EmailForm() {
         if (!email) return;
 
         setIsLoading(true);
+        console.log("Submitting email:", email); // Debug log
+
         try {
+            console.log("Calling server action..."); // Debug log
             const result = await subscribeEmail(email);
+            console.log("Server action result:", result); // Debug log
 
             if (result.success) {
                 toast.success("Thank you for subscribing! We'll keep you posted.");
@@ -27,7 +31,7 @@ export function EmailForm() {
                 toast.error(result.error || "Subscription failed. Please try again later.");
             }
         } catch (error) {
-            console.error("Subscription error:", error);
+            console.error("Client-side subscription error:", error);
             toast.error("Something went wrong. Please try again later.");
         } finally {
             setIsLoading(false);
